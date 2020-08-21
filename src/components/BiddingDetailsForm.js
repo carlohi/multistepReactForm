@@ -3,6 +3,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
 export class BiddingDetailsForm extends Component {
     continue = e => {
         e.preventDefault();
@@ -16,7 +22,14 @@ export class BiddingDetailsForm extends Component {
                     <AppBar title="Datos de publicaci&oacute;n"></AppBar>
                     <TextField hintText="Ingresa el titulo" floatingLabelText="Titulo" onChange={handleChange('title')} defaultValue={values.title }></TextField>
                     <br/>
-                    <TextField hintText="Ingresa la categoria" floatingLabelText="Categoria" onChange={handleChange('category')} defaultValue={values.category }></TextField>
+                    <FormLabel component="category">Categoria</FormLabel>
+                    <br/>
+                    <FormControl component="fieldset">
+      <RadioGroup row aria-label="category" name="category" value={values.category} onChange={handleChange('category')}>
+        <FormControlLabel value="Producto" control={<Radio />} label="Producto" labelPlacement="top" />
+        <FormControlLabel value="Servicio" control={<Radio />} label="Servicio" labelPlacement="top" />
+      </RadioGroup>
+    </FormControl>
                     <br/>
                     <br/>
                     <TextField hintText="Ingresa la descripcion" multiLine={true} onChange={handleChange('description')} defaultValue={values.description }></TextField>
